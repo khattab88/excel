@@ -98,5 +98,22 @@ namespace API.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{nationalParkId:int}", Name = "DeleteNationalPark")]
+        public IActionResult DeleteNationalPark(int nationalParkId)
+        {
+            if (!_nationalParkRepo.IsNationalParkExists(nationalParkId))
+                return NotFound();
+
+            var park = _nationalParkRepo.GetNationalPark(nationalParkId);
+
+            if (!_nationalParkRepo.DeleteNationalPark(park))
+            {
+                ModelState.AddModelError("", $"Something went wrong when deleting record with id {park.Id}!");
+                return StatusCode(500, ModelState);
+            }
+
+            return NoContent();
+        }
     }
 }
