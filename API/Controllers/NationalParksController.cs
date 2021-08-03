@@ -73,11 +73,30 @@ namespace API.Controllers
 
             if (!_nationalParkRepo.CreateNationlPark(park)) 
             {
-                ModelState.AddModelError("", $"Something went wrong when saving record with name {park.Name}!");
+                ModelState.AddModelError("", $"Something went wrong when creating record with name {park.Name}!");
                 return StatusCode(500, ModelState);
             }
 
             return CreatedAtRoute("GetNationalPark", new { nationalParkId = park.Id }, park);
+        }
+
+        [HttpPatch("{nationalParkId:int}", Name = "UpdateNationalPark")]
+        public IActionResult UpdateNationalPark(int nationalParkId, [FromBody] NationalParkDto dto) 
+        {
+            if (dto == null || nationalParkId != dto.Id)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var park = _mapper.Map<NationalPark>(dto);
+
+            if (!_nationalParkRepo.UpdateNationalPark(park))
+            {
+                ModelState.AddModelError("", $"Something went wrong when updating record with id {park.Id}!");
+                return StatusCode(500, ModelState);
+            }
+
+            return NoContent();
         }
     }
 }
