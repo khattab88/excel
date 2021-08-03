@@ -11,7 +11,6 @@ namespace API.Repositories
     {
         public bool CreateNationlPark(NationalPark nationalPark)
         {
-            /// GET ALL
             throw new NotImplementedException();
         }
 
