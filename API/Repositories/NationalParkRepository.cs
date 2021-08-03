@@ -9,6 +9,11 @@ namespace API.Repositories
 {
     public class NationalParkRepository : INationalParkRepository
     {
+        /// <summary>
+        /// Creates a national park
+        /// </summary>
+        /// <param name="nationalPark"></param>
+        /// <returns></returns>
         public bool CreateNationlPark(NationalPark nationalPark)
         {
             throw new NotImplementedException();
