@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Dtos;
+using API.Models;
 using API.Repositories.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -47,6 +48,37 @@ namespace API.Controllers
             var dto = _mapper.Map<NationalParkDto>(park);
 
             return Ok(dto);
+        }
+
+        [HttpPost]
+        public IActionResult CreateNationalPark([FromBody] NationalParkDto dto) 
+        {
+
+            if (dto == null) 
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (_nationalParkRepo.IsNationalParkExists(dto.Name)) 
+            {
+                ModelState.AddModelError("", "National park exists!");
+                return StatusCode(404, ModelState);
+            }
+
+            if (!ModelState.IsValid) 
+            {
+                return BadRequest(ModelState);
+            }
+
+            var park = _mapper.Map<NationalPark>(dto);
+
+            if (!_nationalParkRepo.CreateNationlPark(park)) 
+            {
+                ModelState.AddModelError("", $"Something went wrong when saving record with name {park.Name}!");
+                return StatusCode(500, ModelState);
+            }
+
+            return Ok();
         }
     }
 }
