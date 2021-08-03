@@ -21,5 +21,13 @@ namespace API.Controllers
             _nationalParkRepo = nationalParkRepo;
             _mapper = mapper;
         }
+
+        [HttpGet]
+        public IActionResult GetNationalParks() 
+        {
+            var parks = _nationalParkRepo.GetNationalParks();
+
+            return Ok(parks);
+        }
     }
 }
