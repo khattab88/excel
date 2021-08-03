@@ -38,7 +38,7 @@ namespace API.Controllers
             return Ok(dtos);
         }
 
-        [HttpGet("{nationalParkId:int}")]
+        [HttpGet("{nationalParkId:int}", Name = "GetNationalPark")]
         public IActionResult GetNationalPark(int nationalParkId) 
         {
             var park = _nationalParkRepo.GetNationalPark(nationalParkId);
@@ -53,7 +53,6 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult CreateNationalPark([FromBody] NationalParkDto dto) 
         {
-
             if (dto == null) 
             {
                 return BadRequest(ModelState);
@@ -65,10 +64,10 @@ namespace API.Controllers
                 return StatusCode(404, ModelState);
             }
 
-            if (!ModelState.IsValid) 
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid) 
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             var park = _mapper.Map<NationalPark>(dto);
 
@@ -78,7 +77,7 @@ namespace API.Controllers
                 return StatusCode(500, ModelState);
             }
 
-            return Ok();
+            return CreatedAtRoute("GetNationalPark", new { nationalParkId = park.Id }, park);
         }
     }
 }
