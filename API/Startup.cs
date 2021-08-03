@@ -38,6 +38,16 @@ namespace API
 
             services.AddAutoMapper(typeof(Mappings));
 
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("ExcelOpenAPISpec",
+                    new Microsoft.OpenApi.Models.OpenApiInfo
+                    {
+                        Title = "Excel API",
+                        Version = "1"
+                    });
+            });
+
             services.AddControllers();
         }
 
@@ -50,6 +60,16 @@ namespace API
             }
 
             app.UseHttpsRedirection();
+
+            // https://localhost:{port}/swagger/ExcelOpenAPISpec/swagger.json
+            app.UseSwagger();
+
+            // https://localhost:{port}/swagger/index.html
+            app.UseSwaggerUI(options => 
+            {
+                options.SwaggerEndpoint("/swagger/ExcelOpenAPISpec/swagger.json", "Excel API");
+                options.RoutePrefix = "";
+            });
 
             app.UseRouting();
 
