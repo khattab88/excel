@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{5D1C36AF-5084-4B52-856D-752BFC7035DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9A92D085-68FE-4862-A153-054CF8F735A0}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D1C36AF-5084-4B52-856D-752BFC7035DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D1C36AF-5084-4B52-856D-752BFC7035DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D1C36AF-5084-4B52-856D-752BFC7035DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D1C36AF-5084-4B52-856D-752BFC7035DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D947C110-1ED9-4527-9C3B-1461587FD1C6}
+	EndGlobalSection
+EndGlobal
