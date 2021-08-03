@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Dtos;
 using API.Repositories.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -27,7 +28,13 @@ namespace API.Controllers
         {
             var parks = _nationalParkRepo.GetNationalParks();
 
-            return Ok(parks);
+            var dtos = new List<NationalParkDto>();
+            foreach (var item in parks)
+            {
+                dtos.Add(_mapper.Map<NationalParkDto>(item));
+            }
+
+            return Ok(dtos);
         }
     }
 }
