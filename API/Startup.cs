@@ -16,6 +16,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
 using API.Dtos.Mappings;
+using System.Reflection;
+using System.IO;
 
 namespace API
 {
@@ -46,6 +48,10 @@ namespace API
                         Title = "Excel API",
                         Version = "1"
                     });
+
+                var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentsFile);
+                // options.IncludeXmlComments()
             });
 
             services.AddControllers();
