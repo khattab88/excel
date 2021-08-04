@@ -58,7 +58,7 @@ namespace API
 
                 var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentsFile);
-                // options.IncludeXmlComments()
+                options.IncludeXmlComments(xmlCommentsFullPath);
             });
 
             services.AddControllers();
