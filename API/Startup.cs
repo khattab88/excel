@@ -46,7 +46,14 @@ namespace API
                     new Microsoft.OpenApi.Models.OpenApiInfo
                     {
                         Title = "Excel API",
-                        Version = "1"
+                        Version = "1",
+                        Description = "Excle API Demo",
+                        Contact = new Microsoft.OpenApi.Models.OpenApiContact() 
+                        {
+                            Email = "mahmoud.khattab@excelsystems-eg.com",
+                            Name = "Mahmoud Khattab",
+                            Url = new Uri("https://www.github.com/khattab88")
+                        }
                     });
 
                 var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
