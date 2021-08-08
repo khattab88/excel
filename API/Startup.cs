@@ -61,6 +61,8 @@ namespace API
                 options.IncludeXmlComments(xmlCommentsFullPath);
             });
 
+            services.AddCors();
+
             services.AddControllers();
         }
 
@@ -83,6 +85,11 @@ namespace API
                 options.SwaggerEndpoint("/swagger/ExcelOpenAPISpec/swagger.json", "Excel API");
                 options.RoutePrefix = "";
             });
+
+            app.UseCors(builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
 
             app.UseRouting();
 
